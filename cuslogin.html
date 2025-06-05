@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://img.freepik.com/premium-photo/blur-warehouse-inventory-product-stock-logistic-background-vintage-filter-image_33755-4133.jpg?semt=ais_hybrid') no-repeat center center/cover;
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         
+	    border:5px solid black;
+        }
+        
+           
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #555;
+        }
+	
+    </style>
+</head>
+<body>
+   <div class="login-container">
+        <h2>Login</h2>
+        <form action="ca.html" onSubmit="return validation()" method="POST" id="L1">
+	<legend>
+	<label for="username"> Username:</label>
+         &nbsp;<input type="text" id="username" name="username"  required ><br><br>
+	<label for="password">Password:</label>
+        &nbsp;<input type="password" id="password" name="password"  minlength="8"><br>
+	    <br><button class="btn" >Login</button>
+	</legend>
+
+        </form>
+	<center><p>Don't have an account? <a href="sign.html">Sign up</a></p></center>
+    </div>
+
+ <script>
+	function validation()
+	{
+		var a=document.getElementById("username").value;
+		var b=document.getElementById("password").value;
+		if(a==""||b=="")
+		{
+			alert("ALL FIELS ARE MANDATORY");
+			return false;
+		}
+		else 
+		{
+			return true;
+		}
+	}
+<?php
+        session_start();
+
+        // Database connection details
+        $host = "localhost";
+        $username = "root"; // Replace with your database username
+        $password = ""; // Replace with your database password
+        $dbname = "your_database_name"; // Replace with your database name
+
+        // Create connection
+        $conn = new mysqli($host, $username, $password, $dbname);
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Get form data
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+
+        // Sanitize input
+        $username = $conn->real_escape_string($username);
+
+        // Query the database
+        $sql = "SELECT * FROM users WHERE username = '$username'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Username exists, fetch data
+            $row = $result->fetch_assoc();
+
+            // Verify password
+            if (password_verify($password, $row["password"])) {
+                // Password is correct, set session variables
+                $_SESSION["username"] = $username;
+                header("Location: success.php"); // Redirect to a success page
+                exit();
+            } else {
+                // Password is incorrect
+                echo "Incorrect password.";
+            }
+        } else {
+            // Username does not exist
+            echo "Username not found.";
+        }
+
+        $conn->close();
+        ?>
+    
+</body>
+</html>

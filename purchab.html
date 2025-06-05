@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Purchases - Inventory Management System</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .purchase-process {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .process {
+            flex: 1 1 30%;
+            margin: 10px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .process img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .back-button {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>About Purchases</h1>
+</header>
+
+<div class="container">
+    <button onClick="goBack()" class="back-button">&larr; Back</button>
+
+    <h2>Streamlined Purchasing Process</h2>
+    <p>Our Inventory Management System is designed to simplify and enhance the purchasing process for businesses of all sizes. Efficient purchasing is crucial for maintaining optimal inventory levels and ensuring that your operations run smoothly.</p>
+
+    <h2>Purchasing Process</h2>
+    <div class="purchase-process">
+        <div class="process">
+            <img src="download (1).jpg" alt="Supplier Selection" height="300px">
+            <h3>Supplier Selection</h3>
+            <p>Choose the right suppliers based on quality, price, and reliability to ensure you get the best products for your business.</p>
+        </div>
+        <div class="process">
+            <img src="mm1.gif" alt="Order Placement" height="500px" width="300px">
+            <h3>Order Placement</h3>
+            <p>Place orders directly through our system, ensuring that all details are accurate and easily tracked.</p>
+        </div>
+        <div class="process">
+            <img src="mm2.png" alt="Order Tracking">
+            <h3>Order Tracking</h3>
+            <p>Monitor the status of your orders in real-time, allowing you to stay informed about delivery timelines.</p>
+        </div>
+        <div class="process">
+            <img src="mm3.gif" alt="Inventory Update">
+            <h3>Inventory Update</h3>
+            <p>Automatically update your inventory levels as new stock arrives, keeping your records accurate and up-to-date.</p>
+        </div>
+    </div>
+
+    <h2>Benefits of Our Purchasing Management</h2>
+    <ul>
+        <li>Improved supplier relationships through better communication and tracking.</li>
+        <li>Reduced purchasing errors with automated order placement.</li>
+        <li>Enhanced visibility into order statuses and delivery timelines.</li>
+        <li>Streamlined receiving processes for faster inventory updates.</li>
+        <li>Better inventory management through accurate stock levels.</li>
+    </ul>
+</div>
+
+<footer>
+    <p>&copy; 2023 Warehouse Inventory Management System. All rights reserved.</p>
+</footer>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+</body>
+</html>

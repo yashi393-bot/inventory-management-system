@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background: url('admindash.jpg') no-repeat center center/cover;
+            animation: zoomBackground 10s infinite alternate ease-in-out;
+            transition: background 0.5s;
+        }
+
+        @keyframes zoomBackground {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: rgba(34, 34, 34, 0.8);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideIn 1s ease-in-out;
+            transition: width 0.3s;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 15px;
+            margin: 12px 0;
+            border: none;
+            background: #ff5733;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.3s ease-in-out, background 0.3s;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar button:hover {
+            background: #c70039;
+            transform: scale(1.1);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 20px;
+        }
+
+    .box {
+    /* Remove this line from .box */
+    /* background: url(...) no-repeat center center/cover; */
+    
+    backdrop-filter: blur(5px);
+    color: #fff;
+    padding: 60px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    cursor: pointer;
+    animation: fadeIn 1.5s ease-in-out;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+
+        .box::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+        }
+
+        .box:hover {
+            transform: scale(1.15);
+            box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .box span {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>IMS</h2>
+            <img src="h2.jpg" alt="Admin Logo" class="logo">
+            <button onClick="goToAdmin()">Admin</button>
+            <button onClick="logout()">Logout</button>
+            <button onClick="window.location.href='ims1.html'">Home</button>
+        </div>
+
+        <div class="main-content">
+            <h1>ADMIN DASHBOARD</h1>
+            <div class="dashboard">
+                <div class="box" style="background-image: url('ss1.jpg');" onClick="navigate('supp.php')"><span>Suppliers</span></div>
+                <div class="box" style="background-image: url('ss2.jpg');" onClick="navigate('pro.php')"><span>Product</span></div>
+                <div class="box" style="background-image: url('ss3.jpg');" onClick="navigate('ware.php')"><span>Warehouses</span></div>
+                <div class="box" style="background-image: url('ss4.jpg');" onClick="navigate('custadmin.php')"><span>Customers</span></div>
+                <div class="box" style="background-image: url('ss7.jpg');" onClick="navigate('view_orders.php')"><span>Orders</span></div>
+                <div class="box" style="background-image: url('ss5.jpg');"onClick="navigate('sales.php')"><span>Sales</span></div>
+				 <div class="box" style="background-image: url('ss6.jpg');" onClick="navigate('dispatch_orders.php')"><span>Dispatched Orders</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToAdmin() {
+            window.location.href = "admindash.html";
+        }
+
+        function logout() {
+            window.location.href = "adlogin.php";
+        }
+
+        function navigate(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

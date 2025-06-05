@@ -1,0 +1,13 @@
+Array
+(
+    [name] => sdfghjk
+    [mobile] => 1234567890
+    [email] => qwer@gmail.com
+    [address] => qwertyu
+    [state] => wertyu
+    [city] => satna
+    [pincode] => 23456
+    [totalPrice] => 2500000.00
+    [totalItems] => 1
+    [orderItems] => [{"name":"adda shoes","quantity":1,"total":"2500000.00"}]
+)

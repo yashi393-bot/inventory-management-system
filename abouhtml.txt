@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Inventory Management System</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background: url('background.jpg') no-repeat center center/cover;
+        }
+
+        /* Background Overlay */
+        .container {
+            background: rgba(0, 0, 0, 0.7); /* Dark overlay for readability */
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1); /* Light transparency for sections */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Headings */
+        h2 {
+            border-bottom: 2px solid #fff;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        /* List Styling */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 5px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>About Us</h1>
+            <p>Revolutionizing Warehouse Management with Innovation and Efficiency</p>
+        </header>
+
+        <section class="content">
+            <h2>Our Story</h2>
+            <p>The idea behind <strong>[Your System Name]</strong> was born out of a deep understanding of the struggles businesses face in managing inventory effectively...</p>
+
+            <h2>Our Mission</h2>
+            <p>Our mission is to provide businesses with a powerful, reliable, and easy-to-use inventory management solution that enhances productivity...</p>
+
+            <h2>What We Offer</h2>
+            <ul>
+                <li>✅ Real-Time Inventory Tracking</li>
+                <li>✅ Automated Stock Updates</li>
+                <li>✅ Intelligent Stock Alerts</li>
+                <li>✅ Seamless Barcode & RFID Integration</li>
+                <li>✅ Detailed Analytics & Reports</li>
+                <li>✅ User-Friendly Interface</li>
+                <li>✅ Cloud-Based Access</li>
+            </ul>
+
+            <h2>Who Can Benefit?</h2>
+            <p>Our Warehouse Inventory Management System is tailored for businesses of all sizes and industries, including Retail, Manufacturing, Logistics, and Wholesale.</p>
+
+            <h2>Why Choose Us?</h2>
+            <ul>
+                <li>🔸 Efficiency & Accuracy</li>
+                <li>🔸 Cost Savings</li>
+                <li>🔸 Scalability</li>
+                <li>🔸 24/7 Access & Security</li>
+                <li>🔸 Easy Integration</li>
+            </ul>
+
+            <h2>Get in Touch</h2>
+            <p>Are you ready to transform the way you manage your warehouse inventory? We’d love to hear from you!</p>
+            <p>📞 Contact Us | 📩 Email Us | 🌍 Follow Us</p>
+        </section>
+    </div>
+</body>
+</html>

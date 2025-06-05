@@ -1,0 +1,118 @@
+<?php
+header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *");
+
+include "connection.php"; // Include the database connection file
+
+// Query to fetch all customers
+$sql = "SELECT CustomerID,email, mobile,username, password FROM cuser ORDER BY CustomerID DESC";
+$result = $conn->query($sql);
+
+// Initialize an empty array to store customer data
+$customers = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $customers[] = $row;
+    }
+}
+
+// Return the customer data as a JSON response
+echo json_encode($customers);
+$conn->close(); // Close the database connection
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Customer Management</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqCrouNUjqZEp1gGBUOfQGy5Gve-HGCo-ltg&s') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            max-width: 1400px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+            color: white;
+            backdrop-filter: blur(8px);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            color: white;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+            color: #ff758c;
+            font-size: 16px;
+        }
+        .total-customers {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff758c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color: #ff758c; text-align: center;">Admin Customer Management</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody id="CustomerTable"></tbody>
+        </table>
+        <div class="total-customers" id="totalCustomers">Total Customers: 0</div>
+    </div>
+    
+    <script>
+        let Customers = JSON.parse(localStorage.getItem("Customers")) || [];
+        
+        function renderTable() {
+            let table = document.getElementById("CustomerTable");
+            table.innerHTML = "";
+            
+            Customers.forEach((Customer) => {
+                table.innerHTML += `<tr>
+                    <td>${Customer.CustomerID}</td>
+                    <td>${Customer.Username}</td>
+                    <td>${Customer.Email}</td>
+                    <td>${Customer.Mobile}</td>
+                    <td>${Customer.Password}</td>
+                </tr>`;
+            });
+            
+            document.getElementById("totalCustomers").innerText = `Total Customers: ${Customers.length}`;
+        }
+        
+        window.onload = renderTable;
+    </script>
+</body>
+</html>

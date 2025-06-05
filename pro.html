@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Product Management</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+            background: url('https://balloonone.com/wp-content/uploads/2022/10/Smart-warehouse-management-system.Worker-hands-holding-tablet-on-blurred-warehouse-as-background.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            max-width: 1400px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+            color: white;
+            backdrop-filter: blur(8px);
+        }
+        input, select, button {
+            margin: 5px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: calc(16% - 10px);
+        }
+        button {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #ff5e78, #ff4f8b);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            color: white;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+            color: #ff758c;
+        }
+        td img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+        }
+        td button {
+            padding: 7px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+            min-width: 70px;
+            margin: 2px;
+            white-space: nowrap;
+        }
+        td button:first-child {
+            background-color: #ffb400;
+            color: black;
+        }
+        td button:last-child {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        td button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Product Management</h2>
+        <form id="productForm" method="POST">
+            <input type="text" name="ProductID" id="ProductID" placeholder="Enter Product ID" required />
+            <input type="hidden" name="action" id="action" value="add" />
+            <input type="text" name="ProductName" id="ProductName" placeholder="Product Name" required />
+            <input type="number" name="ProductPrice" id="ProductPrice" placeholder="Price" required />
+            <input type="text" name="ProductImage" id="ProductImage" placeholder="Image URL" required />
+            <input type="text" name="ProductDescription" id="ProductDescription" placeholder="Description" required />
+            <input type="text" name="ProductSize" id="ProductSize" placeholder="Size" required />
+            <select name="Category" id="Category" required>
+                <option value="">Select Category</option>
+                <option value="Clothes">Clothes</option>
+                <option value="Footwear">Footwear</option>
+                <option value="Furniture">Furniture</option>
+            </select>
+            <button type="submit" id="submitButton">Add Product</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Size</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                include 'connection.php';
+                $result = $conn->query("SELECT * FROM products");
+                while ($row = $result->fetch_assoc()) : ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($row['product_id']); ?></td>
+                        <td><?php echo htmlspecialchars($row['name']); ?></td>
+                        <td>₹<?php echo htmlspecialchars($row['price']); ?></td>
+                        <td><a href="<?php echo htmlspecialchars($row['image']); ?>" target="_blank">View Image</a></td>
+                        <td><?php echo htmlspecialchars($row['size']); ?></td>
+                        <td><?php echo htmlspecialchars($row['description']); ?></td>
+                        <td><?php echo htmlspecialchars($row['category']); ?></td>
+                        <td>
+                            <button onclick='editProduct(<?php echo json_encode($row); ?>)'>Edit</button>
+                            <button class="delete" onclick='deleteProduct(<?php echo json_encode($row['product_id']); ?>)'>Delete</button>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

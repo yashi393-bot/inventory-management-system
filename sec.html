@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integration and Security Management - Inventory Management System</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .integration-options, .security-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .option, .feature {
+            flex: 1 1 30%;
+            margin: 10px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .option img, .feature img {
+            max-width: 100%;
+            height: 300px;
+            border-radius: 5px;
+        }
+        .back-button {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Integration and Security Management</h1>
+</header>
+
+<div class="container">
+    <button onClick="goBack()" class="back-button">&larr; Back</button>
+
+    <h2>Integration Options</h2>
+    <p>Our Inventory Management System seamlessly integrates with various platforms to enhance your operational efficiency. Here are some of the key integration options:</p>
+    <div class="integration-options">
+        <div class="option">
+            <img src="se1.jpg" alt="E-commerce Platforms" height="900px" width="600px">
+            <h3>E-commerce Platforms</h3>
+            <p>Integrate with popular e-commerce platforms like Shopify, WooCommerce, and Magento to manage online sales and inventory in real-time.</p>
+        </div>
+        <div class="option">
+            <img src="se2.gif" alt="Shipping Carriers" height="900px" width="600px">
+            <h3>Shipping Carriers</h3>
+            <p>Integrate with major shipping carriers like FedEx, UPS, and DHL for real-time shipping rates and tracking.</p>
+        </div>
+        <div class="option">
+            <img src="se3.gif" alt="ERP Systems">
+            <h3>ERP Systems</h3>
+            <p>Integrate with ERP systems to synchronize inventory data across all departments and improve overall efficiency.</p>
+        </div>
+    </div>
+
+    <h2>Security Features</h2>
+    <p>We prioritize the security of your data. Our Inventory Management System includes robust security features to protect your information:</p>
+    <div class="security-features">
+        <div class="feature">
+            <img src="se4.jpg" alt="Data Encryption">
+            <h3>Data Encryption</h3>
+            <p>All data is encrypted both in transit and at rest, ensuring that sensitive information is protected from unauthorized access.</p>
+        </div>
+        <div class="feature">
+            <img src="se5.png" alt="User Authentication">
+            <h3>User Authentication</h3>
+            <p>Implement multi-factor authentication (MFA) to enhance user security and prevent unauthorized access to the system.</p>
+        </div>
+        <div class="feature">
+            <img src="se6.jpg" alt="Regular Backups">
+            <h3>Regular Backups</h3>
+            <p>A backup is a process by which important data, software, and configuration settings are stored for the purpose of recovering from an unplanned event such as server failure, accidental deletion of a file, or malicious activity.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2023 Warehouse Inventory Management System. All rights reserved.</p>
+</footer>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+</body>
+</html>

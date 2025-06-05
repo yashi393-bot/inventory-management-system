@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="p1.css">
+    <script>
+        function handleClick(userType) {
+            alert('Redirecting to ' + userType + ' page...');
+            window.location.href = userType + ".html";
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            background: url('p1.jpg') no-repeat center center/cover;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 2px solid black;
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 20px;
+        }
+        .home-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+        .home-btn img {
+            width: 20px;
+            height: 20px;
+            filter: invert(1); /* Make icon white on dark background */
+        }
+        .home-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #444444;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.2s, background 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: #333333;
+        }
+        .btn img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button onClick="window.location.href='ims1.html'" class="home-btn">
+            <img src="h1.png" alt="Home Icon">
+            Home Page
+        </button>
+    </div>
+
+    <div class="container">
+        <h1 class="title">INVENTORY MANAGEMENT</h1>
+        <div class="buttons">
+            <div class="button-container">
+                <button class="btn customer-btn" onClick="handleClick('customer')">
+                    <img src="h2.jpg" alt="Customer Logo">
+                    Customer
+                </button>
+            </div>
+            <div class="button-container">
+                <button class="btn admin-btn" onClick="handleClick('admin')">
+                    <img src="Screenshot 2025-04-29 004929.png" alt="Admin Logo">
+                    Admin
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="p1.js"></script>
+</body>
+</html>

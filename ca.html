@@ -1,0 +1,127 @@
+<?php
+include "connection.php"; // Include the database connection file
+
+// Query to fetch products from the database
+$sql = "SELECT product_path, image_path, size, description, category FROM products";
+$result = $conn->query($sql);
+
+// Initialize an empty array to store product data
+$products = array();
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        // Add the product to the array
+        $products[] = array(
+            'product_path' => $row['product_path'],
+            'image_path' => $row['image_path'],
+            'size' => $row['size'],
+            'description' => $row['description'],
+            'category' => $row['category']
+        );
+    }
+}
+$conn->close(); // Close the database connection
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Website</title>
+    <link rel="stylesheet" href="castyles.css">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            padding: 15px;
+            color: white;
+        }
+        ul {
+            list-style: none;
+            display: flex;
+        }
+        li {
+            margin: 0 10px;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px;
+        }
+        .category {
+            padding: 10px 20px;
+            background: #ff3f6c;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            width: 22%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        /* Add more styles as needed */
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>MyStore</h1>
+            <ul>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="#" onClick="toggleCart()">Cart <span id="cart-count">0</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="categories">
+        <div class="category" onClick="showCategory('ALL')">ALL PRODUCTS</div>
+        <div class="category" onClick="showCategory('clothing')">Clothing</div>
+        <div class="category" onClick="showCategory('footwear')">Footwear</div>
+        <div class="category" onClick="showCategory('stationary')">STATIONARY</div>
+    </section>
+
+    <section class="products">
+        <?php foreach ($products as $product): ?>
+            <div class="product <?php echo $product['category']; ?>" data-id="<?php echo $product['product_path']; ?>" data-name="<?php echo $product['description']; ?>" data-price="<?php echo $product['size']; ?>">
+                <img src="<?php echo $product['image_path']; ?>" alt="<?php echo $product['description']; ?>" height="350px" width="250px">
+                <h2><?php echo $product['description']; ?></h2>
+                <p>Price: ₹<?php echo $product['size']; ?></p>
+                <button onClick="addToCart('<?php echo $product['product_path']; ?>', '<?php echo $product['description']; ?>', '<?php echo $product['size']; ?>')">Add to Cart</button>
+            </div>
+        <?php endforeach; ?>
+    </section>
+
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div
